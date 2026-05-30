@@ -5,33 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sonic Sandbox // Plexove Lab</title>
     <style>
-        *
-      {  box-sizing: border-box;
+        * {
+            box-sizing: border-box;
             margin: 0;
-            padding: 0; }
-        
-        
-        body 
-           { background-color: #0a0a0c;
+            padding: 0;
+        }
+        body {
+            background-color: #0a0a0c;
             color: #e4e4e7;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             overflow: hidden;
-               height: 100vh;
-               display: flex;
-                flex-direction: column;
-                  justify-content: center;
-              align-items: center; }
-        
-        #canvas 
-            {   position: absolute;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #canvas {
+            position: absolute;
             top: 0;
-                        left: 0;
+            left: 0;
             width: 100%;
-                 height: 100%;
-            z-index: 1;         }
-        
-        .ui-container 
-           { position: relative;
+            height: 100%;
+            z-index: 1;
+        }
+        .ui-container {
+            position: relative;
             z-index: 10;
             background: rgba(15, 15, 20, 0.75);
             backdrop-filter: blur(12px);
@@ -42,10 +41,10 @@
             max-width: 400px;
             width: 90%;
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            transition: opacity  0.3s ease;    }
-        
-        .ui-container.hidden
-{ opacity: 0.05;
+            transition: opacity 0.3s ease;
+        }
+        .ui-container.hidden {
+            opacity: 0.05;
         }
         .ui-container.hidden:hover {
             opacity: 1;
@@ -257,7 +256,7 @@
                 highs = highs / 50;
             }
 
-            
+            // Draw center node indicator
             if (bass > 20) {
                 ctx.beginPath();
                 ctx.arc(canvas.width / 2, canvas.height / 2, 20 + bass * 0.2, 0, Math.PI * 2);
@@ -265,13 +264,13 @@
                 ctx.fill();
             }
 
-    
+            // Core matrix compute step
             particles.forEach(particle => {
                 particle.update(bass, highs);
                 particle.draw();
             });
 
-        requst animation loop(renderLoop);
+            requestAnimationFrame(renderLoop);
         }
 
         renderLoop();
